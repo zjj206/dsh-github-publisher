@@ -1,0 +1,56 @@
+{
+  "name": "dsh-github-publisher",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness tools for safe GitHub repository management and confirmed one-click project publishing",
+  "type": "module",
+  "main": "lib/web-host.js",
+  "exports": {
+    ".": "./lib/web-host.js",
+    "./tools": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/**/*.js",
+    "cordis.patch.yml",
+    "preset/**/*.yml",
+    "README.md",
+    "QUICKSTART.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/core.js && node --check lib/web-host.js && node --check lib/client.js",
+    "test": "node --test test/*.test.js",
+    "prepack": "npm run check && npm test"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "cordis",
+    "github",
+    "release",
+    "publisher"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-subprocess": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.6"
+  }
+}

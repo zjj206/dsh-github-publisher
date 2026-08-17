@@ -1,0 +1,15 @@
+# Append this row to a USER-COPIED agent preset's agent.cordis.yml.
+# Do not edit the shipped standard preset.
+#
+# The shared subprocess service is host-owned; this tool consumer only reads it
+# and registers tools in the current agent scope, so it must stay outside an
+# isolate realm.
+- id: github-publisher
+  name: dsh-github-publisher/tools
+  inject: [tools, subprocess]
+  config:
+    defaultVisibility: public
+    previewTtlSeconds: 600
+    commandTimeoutMs: 120000
+    maxOutputBytes: 262144
+    maxScanFiles: 20000

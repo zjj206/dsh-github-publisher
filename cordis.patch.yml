@@ -1,0 +1,10 @@
+- insert:
+    # Host-owned Web API. The package manifest's dsh.client declaration makes
+    # the same row discoverable by the browser roster at ./client.
+    - id: github-publisher-web
+      name: dsh-github-publisher
+      config:
+        defaultProjectPath: !!js process.cwd()
+        previewTtlSeconds: 600
+        commandTimeoutMs: 120000
+        maxScanFiles: 20000
